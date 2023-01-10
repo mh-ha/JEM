@@ -520,10 +520,12 @@ if __name__ == "__main__":
     parser.add_argument('--output_dir', default=os.path.expanduser("~/exp.log/ori_jem/"),
                         help='Path to save logs and chkpts')
 
+    parser.add_argument("--seed", type=int, default=1, help="seed")
+
     args = parser.parse_args()
     args.n_classes = 100 if args.dataset == "cifar100" else 10
 
     args.exp = datetime.today().strftime("%m%d_%H%M")
 
-    set_seed(1)
+    set_seed(args.seed)
     main(args)
